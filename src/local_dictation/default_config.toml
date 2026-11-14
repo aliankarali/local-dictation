@@ -1,0 +1,84 @@
+# local-dictation configuration
+# Edit this file, then choose "Reload config" from the menu bar icon.
+
+[hotkeys]
+# Hold to dictate (push-to-talk). Tap to start hands-free mode, tap again to stop.
+# Options: right_option, left_option, right_command, left_command,
+#          right_shift, left_shift, right_control, left_control, fn
+dictate = "right_option"
+# Hold to speak a command (nothing you say is typed).
+command = "right_command"
+# A press shorter than this counts as a tap, not a hold.
+tap_max_ms = 250
+# "single": one tap starts/stops hands-free. "double": double-tap starts it.
+handsfree_tap = "single"
+# Used when handsfree_tap = "double".
+double_tap_ms = 400
+
+[audio]
+# Input device name (substring match). Empty = system default.
+device = ""
+# Pause that ends an utterance. Commands like "undo" must be said on their own,
+# separated by at least this pause.
+silence_ms = 600
+# Long utterances are split after this many seconds.
+max_utterance_s = 25
+# Voice activity threshold (0-1). Raise it in noisy rooms.
+vad_threshold = 0.5
+# Keep the microphone open this long after the last use, so the first word of
+# the next dictation is not cut off. 0 = close immediately.
+mic_idle_close_s = 300
+# Audio kept from just before you pressed the key.
+preroll_ms = 300
+
+[engine]
+model = "mlx-community/parakeet-tdt-0.6b-v2"
+# Beam search width (used when any boosting is on).
+beam_size = 4
+# How strongly [vocabulary] words are preferred (0.5 - 5).
+vocabulary_boost = 2.0
+# How strongly spoken commands are preferred, so "comma" is not heard as
+# "common" or "scratch that" as "scratch dad". 0 = off (slightly faster).
+command_boost = 2.0
+
+[output]
+# "paste": put text on the clipboard and press Cmd+V (fast, reliable, the
+#          clipboard is restored afterwards).
+# "type":  synthesize key presses (does not touch the clipboard).
+method = "paste"
+restore_clipboard = true
+# Start/stop sounds (the main feedback when the transcript window is off).
+sounds = true
+# Floating window with what you are saying. Warnings are always shown.
+show_transcript = false
+
+[text]
+# Keep the punctuation the speech model adds by itself. If false, only spoken
+# punctuation ("comma", "period", ...) is inserted.
+auto_punctuation = true
+# The model ends almost every phrase with a period. false = drop that final
+# period (a spoken "period" is still typed, and so are "?" and "!").
+final_period = false
+
+[llm]
+# Local language model for natural edits like "put that in quotes" or
+# "capitalize the last sentence". Used only when a phrase looks like an edit.
+enabled = true
+model = "mlx-community/Qwen3-4B-Instruct-2507-4bit"
+
+[vocabulary]
+# Names, products and jargon the speech model should prefer.
+words = []
+
+[corrections]
+# "what the model hears" = "what you want"  (whole words, case-insensitive)
+# "cube control" = "kubectl"
+
+[key_commands]
+# Extra spoken commands that press keys. Must be said on their own.
+# "save file" = "cmd+s"
+# "next tab" = "ctrl+tab"
+
+[snippets]
+# Spoken phrase (said on its own) -> text to insert.
+# "insert signature" = "Best regards,\nYour Name"

@@ -1,0 +1,37 @@
+[project]
+name = "local-dictation"
+version = "0.1.0"
+description = "Local, private speech-to-text for macOS with voice commands (Parakeet + MLX)"
+readme = "README.md"
+license = "MIT"
+license-files = ["LICENSE"]
+keywords = ["dictation", "speech-to-text", "macos", "mlx", "parakeet", "voice-commands"]
+classifiers = [
+    "Operating System :: MacOS",
+    "Environment :: MacOS X",
+    "Topic :: Multimedia :: Sound/Audio :: Speech",
+]
+requires-python = ">=3.12"
+dependencies = [
+    "mlx-lm>=0.32.2",
+    "numpy>=2.5.4",
+    "onnxruntime>=1.32.0",
+    "parakeet-mlx>=0.7.0",
+    "pyobjc-framework-applicationservices>=13.0",
+    "pyobjc-framework-avfoundation>=13.0",
+    "pyobjc-framework-cocoa>=13.0",
+    "pyobjc-framework-quartz>=13.0",
+    "sounddevice>=0.5.6",
+]
+
+[project.scripts]
+dictation = "local_dictation.cli:main"
+
+[build-system]
+requires = ["uv_build>=0.13.8,<0.14.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pytest>=9.2.0",
+]

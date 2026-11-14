@@ -1,0 +1,28 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+
+# Local data (models, logs, recordings never belong in the repo)
+*.log
+logs/
+models/
+*.wav
+*.aiff
+*.m4a
+*.onnx
+*.safetensors
+bench-out/
+
+# Secrets / editors / OS
+.env
+.env.*
+.idea/
+.vscode/
+.DS_Store
